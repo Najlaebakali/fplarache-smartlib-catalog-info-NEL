@@ -51,7 +51,8 @@ resource "aws_ecs_service" "catalog_service" {
 
 //Rôle IAM pour ECS
 resource "aws_iam_role" "ecs_task_execution" {
-    name = "ecsTaskExecutionRole"
+    name = "${var.project_name}-ecsTaskExecutionRole"  //lajout dun prefixe qui est genere dynamiquement au nom du role IAM pour eviter tt conflits
+    //name = "ecsTaskExecutionRole"
 
     assume_role_policy = jsonencode({
         Version="2012-10-17"
