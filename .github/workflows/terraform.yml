@@ -28,14 +28,20 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      # Étape 4 : Terraform Init
+       # Étape 4 : Validation Terraform
+      - name: Terraform Validate
+        run: terraform validate
+
+      # Étape 5 : Terraform Init
       - name: Terraform Init
         run: terraform init
 
-      # Étape 5 : Terraform Plan
+      # Étape 6 : Terraform Plan
       - name: Terraform Plan
         run: terraform plan
 
-      # Étape 6 : Terraform Apply
+      # Étape 7 : Terraform Apply
       - name: Terraform Apply
         run: terraform apply -auto-approve
+        if: github.ref == 'refs/heads/main'
+
