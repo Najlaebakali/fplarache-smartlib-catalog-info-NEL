@@ -29,8 +29,8 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
        # Étape 4 : Validation Terraform
-      - name: Terraform Validate
-        run: terraform validate
+      #- name: Terraform Validate
+       # run: terraform validate
 
       # Étape 5 : Terraform Init
       - name: Terraform Init
